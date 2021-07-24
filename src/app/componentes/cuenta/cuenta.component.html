@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta</title>
+</head>
+
+<body>
+    <header>
+        <div class="miembros">
+            <div class="contenedor3"></div>
+            <br>
+            <h2 class="sobredesarrollador">Bienvenido a tu <br/>Perfil</h2>
+            <h3 class="slogan">Puedes editar, ver y eliminar tu cuenta si deseas</h3>
+            <br>
+            <div class="cards">
+                <div class="card">
+                    <div class="d-flex" *ngIf="_usuarioService.getIdentidad()">
+                        <img *ngIf="_usuarioService.getIdentidad().image" [src]="_usuarioService.getIdentidad().image" class="user-image">
+                        <img *ngIf="_usuarioService.getIdentidad().image === null" src="/assets/man.png" class="user-image">
+                        <a class="nav-link">{{ _usuarioService.getIdentidad().nombre}}</a>
+                    </div>
+                    <h4>FIFA 21 ULTIMATE EDITION</h4>
+                    <p>Esta edición es para gente competitiva, recomendado para profesionales.</p>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="container">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">username</th>
+                        <th scope="col">rol</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ identidad._id }}</th>
+                        <td>{{ identidad.username }}</td>
+                        <td>{{ identidad.rol }}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario" (click)="obtenerUsuarioId(identidad._id)">Editar</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario" (click)="obtenerUsuarioId(identidad._id)">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Modal Editar Usuario -->
+            <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="inputUsername" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="inputUsername" name="username" #username="ngModel" [(ngModel)]="idUsuarioModel.username">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="editarUsuario()">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Eliminar Usuario -->
+            <div class="modal fade" id="modalEliminarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Esta seguro de que desea eliminar el Usuario, {{ idUsuarioModel.username }}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <button routerLink="/registro" routerLinkActive="active" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarUsuario(usuarios._id)">Si, eliminar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+</body>
+
+</html>
