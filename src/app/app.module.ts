@@ -12,6 +12,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
 import { CuentaComponent } from './componentes/cuenta/cuenta.component';
+import { DoctorComponent } from './componentes/doctor/doctor.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CuentaComponent } from './componentes/cuenta/cuenta.component';
     InicioComponent,
     LoginComponent,
     RegistrarComponent,
-    CuentaComponent
+    CuentaComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,

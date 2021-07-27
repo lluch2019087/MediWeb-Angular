@@ -21,11 +21,7 @@ registro(usuario: Usuario): Observable<any>{
   let params = JSON.stringify(usuario);
   return this._http.post(this.url + "registrarUsuario", params, {headers: this.headersVariable})
 }
-registroAdmin(usuario: Usuario, token: any): Observable<any>{
-  let params = JSON.stringify(usuario);
-  let headersToken = this.headersVariable.set("Authorization", token);
-  return this._http.post(this.url + "crearUsuarioAdmin", params, {headers: headersToken})
-}
+
 ObtenerUsuarios(): Observable<any>{
   //let headersToken = this.headersVariable.set("Authorization", this.getToken());
   return this._http.get(this.url + "obtenerUsuarios", {headers: this.headersVariable})
@@ -53,8 +49,28 @@ obtenerUsuario(id: String): Observable<any>{
 verCuenta() : Observable<any>{
   return this._http.post(this.url + 'verCuenta',{headers: this.headersVariable});
  }
+ //************************************************************************************************* */
+ registrarDoctor(usuario: Usuario, token: any): Observable<any>{
+  let params = JSON.stringify(usuario);
+  let headersToken = this.headersVariable.set("Authorization", token);
+  return this._http.post(this.url + "registrarDoctor", params, {headers: headersToken})
+}
+ObtenerDoctores(): Observable<any>{
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.get(this.url + "obtenerDoctores", {headers: headersToken})
+}
+editarDoctor(usuario: Usuario): Observable<any>{
+  let params = JSON.stringify(usuario);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.put(this.url + "editarDoctor/" + usuario._id, params , {headers: headersToken})
+}
+eliminarDoctor(id: String): Observable<any>{
+  return this._http.delete(this.url +"eliminarDoctor/" + id, {headers: this.headersVariable})
+}
 
-
+obtenerDoctor(id: String): Observable<any>{
+  return this._http.get(this.url +"obtenerDoctor/" + id, {headers: this.headersVariable})
+}
 
 getIdentidad(){
   var identidad2 = JSON.parse(localStorage.getItem("identidad") ||"{}");

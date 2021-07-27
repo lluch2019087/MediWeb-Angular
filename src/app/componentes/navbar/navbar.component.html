@@ -13,6 +13,7 @@
                     <a class="nav-link" routerLink="/inicio" routerLinkActive="active">Inicio</a>
                 </li>
 
+
             </ul>
             <div class="d-flex" *ngIf="_usuarioService.getIdentidad()">
                 <img *ngIf="_usuarioService.getIdentidad().image" [src]="_usuarioService.getIdentidad().image" class="user-image">

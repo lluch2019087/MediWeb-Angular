@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
         }else if(this.identidad.rol==="ROL_ADMIN"){
 
-          this._router.navigate(["/pagadministrador"]);
+          this._router.navigate(["/doctor"]);
           console.log(this.identidad.rol)
         }
 
