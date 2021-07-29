@@ -19,7 +19,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.identidad = this._usuarioService.getIdentidad();
     console.log(this.identidad.username)
-    
+
+  }
+
+  cerrarSesion(){
+    localStorage.clear();
   }
 
 }

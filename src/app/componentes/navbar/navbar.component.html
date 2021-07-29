@@ -16,12 +16,16 @@
 
             </ul>
             <div class="d-flex" *ngIf="_usuarioService.getIdentidad()">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
                 <img *ngIf="_usuarioService.getIdentidad().image" [src]="_usuarioService.getIdentidad().image" class="user-image">
-                <img *ngIf="_usuarioService.getIdentidad().image === null" src="/assets/man.png" class="user-image">
-                <a class="nav-link">{{ this._usuarioService.getIdentidad().username}}</a>
-            </div>
-            <a class="nav-link" routerLink="/cuenta" routerLinkActive="active" *ngIf="this.identidad.username!=undefined">Mi Cuenta</a>
 
+
+            </div>
+            <img class="nav-link" routerLink="/cuenta" routerLinkActive="active" *ngIf="_usuarioService.getIdentidad().image != null && this._usuarioService.getIdentidad().username!=undefined" src="/assets/man.png" class="user-image">
+            <div><img class="nav-link" routerLink="/login" routerLinkActive="active" src="/assets/logout.png" class="user-image" *ngIf="this._usuarioService.getIdentidad().username!=undefined" (click)="cerrarSesion()"></div>
         </div>
     </div>
 </nav>

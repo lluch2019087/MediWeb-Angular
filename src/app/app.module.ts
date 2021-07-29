@@ -14,6 +14,7 @@ import { RegistrarComponent } from './componentes/registrar/registrar.component'
 import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { DoctorComponent } from './componentes/doctor/doctor.component';
 import { EnfermedadesComponent } from './componentes/enfermedades/enfermedades.component';
+import { EnfermedadComponent } from './componentes/enfermedad/enfermedad.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { EnfermedadesComponent } from './componentes/enfermedades/enfermedades.c
     RegistrarComponent,
     CuentaComponent,
     DoctorComponent,
-    EnfermedadesComponent
+    EnfermedadesComponent,
+    EnfermedadComponent
   ],
   imports: [
     BrowserModule,
