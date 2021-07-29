@@ -91,6 +91,39 @@ getToken(){
   return this.token;
 }
 
+//************************************************************************************************* */
+
+registrarEnfermedad(enfermedad: any): Observable<any>{
+  let params = JSON.stringify(enfermedad);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.post(this.url+"registrarEnfermedad",params, {headers: headersToken});
+
+}
+
+obtenerEnfermedades(): Observable<any>{
+  
+  return this._http.get(this.url+"obtenerEnfermedades", {headers: this.headersVariable});
+
+}
+
+eliminarEnfermedad(id: String): Observable<any>{
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.delete(this.url+"eliminarEnfermedad/"+id,{headers: headersToken});
+}
+
+editarEnfermedad(enfermedad: any): Observable<any>{
+  let params = JSON.stringify(enfermedad);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.put(this.url+"editarEnfermedad/"+ enfermedad._id, params, {headers: headersToken});
+}
+
+obtenerEnfermedadID(id: String): Observable<any>{
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.get(this.url+"obtenerEnfermedadID/"+id, {headers: headersToken});
+}
 
 }
 

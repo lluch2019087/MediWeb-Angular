@@ -10,6 +10,8 @@ export class InicioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
-
+  refresh(): void { window.location.reload(); }
+  
 }

@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;" *ngFor="let enf of this.enfermedades">
+    <div class="card-header" >
+        Enfermedad: {{enf.nombre}}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" >Descripcion: {{enf.descripcion}}</li>
+        <li class="list-group-item">Síntomas: {{enf.sintomas}}</li>
+    </ul>
+
+
+</div>
+<div class="card" style="width: 15rem;">
+    <button type="button" class="btn btn-primary btn-lg" routerLink="/inicio" routerLinkActive="active">Regresar</button>
+</div>

@@ -13,6 +13,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
 import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { DoctorComponent } from './componentes/doctor/doctor.component';
+import { EnfermedadesComponent } from './componentes/enfermedades/enfermedades.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DoctorComponent } from './componentes/doctor/doctor.component';
     LoginComponent,
     RegistrarComponent,
     CuentaComponent,
-    DoctorComponent
+    DoctorComponent,
+    EnfermedadesComponent
   ],
   imports: [
     BrowserModule,

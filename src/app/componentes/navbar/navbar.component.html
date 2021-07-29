@@ -18,9 +18,9 @@
             <div class="d-flex" *ngIf="_usuarioService.getIdentidad()">
                 <img *ngIf="_usuarioService.getIdentidad().image" [src]="_usuarioService.getIdentidad().image" class="user-image">
                 <img *ngIf="_usuarioService.getIdentidad().image === null" src="/assets/man.png" class="user-image">
-                <a class="nav-link">{{ _usuarioService.getIdentidad().nombre}}</a>
+                <a class="nav-link">{{ this._usuarioService.getIdentidad().username}}</a>
             </div>
-            <a class="nav-link" routerLink="/cuenta" routerLinkActive="active">Mi Cuenta</a>
+            <a class="nav-link" routerLink="/cuenta" routerLinkActive="active" *ngIf="this.identidad.username!=undefined">Mi Cuenta</a>
 
         </div>
     </div>

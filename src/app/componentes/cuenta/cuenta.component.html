@@ -15,17 +15,7 @@
             <h2 class="sobredesarrollador">Bienvenido a tu <br/>Perfil</h2>
             <h3 class="slogan">Puedes editar, ver y eliminar tu cuenta si deseas</h3>
             <br>
-            <div class="cards">
-                <div class="card">
-                    <div class="d-flex" *ngIf="_usuarioService.getIdentidad()">
-                        <img *ngIf="_usuarioService.getIdentidad().image" [src]="_usuarioService.getIdentidad().image" class="user-image">
-                        <img *ngIf="_usuarioService.getIdentidad().image === null" src="/assets/man.png" class="user-image">
-                        <a class="nav-link">{{ _usuarioService.getIdentidad().nombre}}</a>
-                    </div>
-                    <h4>FIFA 21 ULTIMATE EDITION</h4>
-                    <p>Esta edición es para gente competitiva, recomendado para profesionales.</p>
-                </div>
-            </div>
+            
         </div>
         <br><br><br>
         <div class="container">
