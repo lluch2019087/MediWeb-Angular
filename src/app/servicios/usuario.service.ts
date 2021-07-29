@@ -102,8 +102,8 @@ registrarEnfermedad(enfermedad: any): Observable<any>{
 }
 
 obtenerEnfermedades(): Observable<any>{
-  
-  return this._http.get(this.url+"obtenerEnfermedades", {headers: this.headersVariable});
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.get(this.url+"obtenerEnfermedades", {headers: headersToken});
 
 }
 
