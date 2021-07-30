@@ -24,7 +24,7 @@ export class DoctorComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.ObtenerDoctores()
+    this.ObtenerDoctores();
   }
   registrarDoctor(){
     this._usuarioService.registrarDoctor(this.modeloUsuario, this.token).subscribe(
