@@ -15,10 +15,13 @@
             <h2 class="sobredesarrollador">Bienvenido a tu <br/>Perfil</h2>
             <h3 class="slogan">Puedes editar, ver y eliminar tu cuenta si deseas</h3>
             <br>
-            <div class="d-flex" *ngIf="_usuarioService.getIdentidad()">
-                <img *ngIf="_usuarioService.getIdentidad().image" [src]="_usuarioService.getIdentidad().image" class="user-image">
-                <img *ngIf="_usuarioService.getIdentidad().image == null" src="/assets/man.png" class="user-image">
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Default file input example</label>
+                <input class="form-control" (change)="inputEvento($event)" type="file" id="formFile">
             </div>
+            <button class="btn btn-primary" (click)="subirImagen()">Subir Imagen</button>
+
+
 
         </div>
         <br><br>

@@ -48,7 +48,7 @@ obtenerUsuario(id: String): Observable<any>{
   return this._http.post(this.url +"obtenerUsuarioID/" + id, {headers: this.headersVariable})
 }
 verCuenta() : Observable<any>{
-  return this._http.post(this.url + 'verCuenta',{headers: this.headersVariable});
+  return this._http.get(this.url + 'verCuenta', {headers: this.headersVariable});
  }
  //************************************************************************************************* */
  registrarDoctor(usuario: Usuario, token: any): Observable<any>{
