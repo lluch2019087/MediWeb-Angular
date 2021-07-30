@@ -24,7 +24,7 @@ export class DoctorComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.ObtenerDoctores()
+    this.ObtenerDoctores();
   }
   registrarDoctor(){
     this._usuarioService.registrarDoctor(this.modeloUsuario, this.token).subscribe(
@@ -40,8 +40,8 @@ export class DoctorComponent implements OnInit {
         //this._router.navigate(["/login"]);
       },
       error=>{
-        console.log(<any>error);  
-        
+        console.log(<any>error);
+
         Swal.fire({
           icon: 'error',
           title: 'Error...',
