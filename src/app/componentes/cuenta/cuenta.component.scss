@@ -65,3 +65,13 @@ header .subtitulo {
     margin-left: 120px;
     text-align: justify;
 }
+
+.user-image {
+    margin: 0 auto;
+    /* Added */
+    float: none;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 110%;
+}
