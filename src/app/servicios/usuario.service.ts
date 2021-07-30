@@ -57,8 +57,7 @@ verCuenta() : Observable<any>{
   return this._http.post(this.url + "registrarDoctor", params, {headers: headersToken})
 }
 ObtenerDoctores(): Observable<any>{
-  let headersToken = this.headersVariable.set("Authorization", this.getToken());
-  return this._http.get(this.url + "obtenerDoctores", {headers: headersToken})
+  return this._http.get(this.url + "obtenerDoctores", {headers:  this.headersVariable})
 }
 editarDoctor(usuario: Usuario): Observable<any>{
   let params = JSON.stringify(usuario);
@@ -66,7 +65,8 @@ editarDoctor(usuario: Usuario): Observable<any>{
   return this._http.put(this.url + "editarDoctor/" + usuario._id, params , {headers: headersToken})
 }
 eliminarDoctor(id: String): Observable<any>{
-  return this._http.delete(this.url +"eliminarDoctor/" + id, {headers: this.headersVariable})
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.delete(this.url +"eliminarDoctor/" + id, {headers: headersToken})
 }
 
 obtenerDoctor(id: String): Observable<any>{
