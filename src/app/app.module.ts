@@ -16,6 +16,7 @@ import { DoctorComponent } from './componentes/doctor/doctor.component';
 import { EnfermedadesComponent } from './componentes/enfermedades/enfermedades.component';
 import { EnfermedadComponent } from './componentes/enfermedad/enfermedad.component';
 import { AdminprincipalComponent } from './componentes/adminprincipal/adminprincipal.component';
+import { ListausuariosComponent } from './componentes/listausuarios/listausuarios.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AdminprincipalComponent } from './componentes/adminprincipal/adminprinc
     DoctorComponent,
     EnfermedadesComponent,
     EnfermedadComponent,
-    AdminprincipalComponent
+    AdminprincipalComponent,
+    ListausuariosComponent
   ],
   imports: [
     BrowserModule,

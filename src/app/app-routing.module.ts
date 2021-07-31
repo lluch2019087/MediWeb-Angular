@@ -5,6 +5,7 @@ import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { DoctorComponent } from './componentes/doctor/doctor.component';
 import { EnfermedadesComponent } from './componentes/enfermedades/enfermedades.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { ListausuariosComponent } from './componentes/listausuarios/listausuarios.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "doctor", component: DoctorComponent},
   {path: "enfermedades", component: EnfermedadesComponent},
   {path: "adminprincipal", component: AdminprincipalComponent},
+  {path: "listausuarios", component: ListausuariosComponent},
   {path: "**", component: PrincipalComponent}
 
 ];

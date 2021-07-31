@@ -5,13 +5,14 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-doctor',
-  templateUrl: './doctor.component.html',
-  styleUrls: ['./doctor.component.scss'],
+  selector: 'app-listausuarios',
+  templateUrl: './listausuarios.component.html',
+  styleUrls: ['./listausuarios.component.scss'],
   providers: [UsuarioService]
 
 })
-export class DoctorComponent implements OnInit {
+export class ListausuariosComponent implements OnInit {
+
   public usuariosLista: any;
   public idUSuario =  ''
   public modeloUsuario: Usuario;
@@ -26,19 +27,20 @@ export class DoctorComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.ObtenerDoctores();
+    this.ObtenerUsuarios();
   }
-  registrarDoctor(){
-    this._usuarioService.registrarDoctor(this.modeloUsuario, this.token).subscribe(
+  registrarUsuario(){
+    this._usuarioService.registro(this.modeloUsuario).subscribe(
       response=> {
         console.log(response)
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Doctor registrado correctamente',
+          title: 'Usuario registrado correctamente',
           showConfirmButton: false,
           timer: 1500
         })
+        this.ObtenerUsuarios();
         //this._router.navigate(["/login"]);
       },
       error=>{
@@ -52,49 +54,50 @@ export class DoctorComponent implements OnInit {
       }
     )
   }
-  ObtenerDoctores(){
-    this._usuarioService.ObtenerDoctores().subscribe(
+  ObtenerUsuarios(){
+    this._usuarioService.ObtenerUsuarios().subscribe(
       response => {
 
-         this.usuariosLista = response.usuarios_registrados
-         console.log(response.usuarios_registrados);
+         this.usuariosLista = response.usuarioEncontrado
+         console.log(response.usuarioEncontrado);
       },
       error => {
         console.log(<any>error);
       })
   }
 
-  obtenerDoctor(idUSuario: any){
-    this._usuarioService.obtenerDoctor(idUSuario).subscribe(
+  obtenerUsuario(idUSuario: any){
+    this._usuarioService.obtenerUsuario(idUSuario).subscribe(
       response => {
-        this.modeloUsuario = response.usuario_registrado
-        console.log(response.usuario_registrado);
+        this.modeloUsuario = response.usuarioEncontrado
+        console.log(response.usuarioEncontrado);
     })
 
   }
-   editarDoctor(){
-     this._usuarioService.editarDoctor(this.modeloUsuario  ).subscribe(
+   editarUsuario(){
+     this._usuarioService.editarUsuario(this.modeloUsuario  ).subscribe(
       response => {
       console.log(response);
-      this.ObtenerDoctores();
+      this.ObtenerUsuarios();
 
      })
    }
-   eliminarDoctor(id: any){
-    this._usuarioService.eliminarDoctor(id).subscribe(
+   eliminarUsuario(id: any){
+    this._usuarioService.eliminarUsuario(id).subscribe(
       response => {
         console.log(response)
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Haz eliminado al Doctor correctamente',
+          title: 'Haz eliminado al Usuario correctamente',
           showConfirmButton: false,
           timer: 1500
         })
-        this.ObtenerDoctores();
+        this.ObtenerUsuarios();
       }
     )
 
    }
 
 }
+
