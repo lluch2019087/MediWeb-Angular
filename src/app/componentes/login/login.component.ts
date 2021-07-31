@@ -50,17 +50,21 @@ export class LoginComponent implements OnInit {
         })
 
         if(this.identidad.rol==="ROL_USUARIO"){
-          
+
           this._router.navigate(["/inicio"]);
-          this._router.navigate(["/inicio"]);
-          
+
           console.log(this.identidad.rol)
 
         }else if(this.identidad.rol==="ROL_ADMIN"){
 
-          this._router.navigate(["/doctor"]);
-          this._router.navigate(["/doctor"]);
-          
+          this._router.navigate(["/adminprincipal"]);
+
+          console.log(this.identidad.rol)
+
+        }else if(this.identidad.rol==="ROL_DOCTOR"){
+
+          this._router.navigate(["/inicio"]);
+
           console.log(this.identidad.rol)
         }
 

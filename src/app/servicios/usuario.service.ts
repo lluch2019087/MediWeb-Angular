@@ -38,17 +38,19 @@ login(usuario: any, getToken:any ): Observable<any>{
 
 editarUsuario(usuario: Usuario): Observable<any>{
   let params = JSON.stringify(usuario);
-  return this._http.put(this.url + "editarUsuario/" + usuario._id, params , {headers: this.headersVariable})
+  let headersToken = this.headersVariable.set('Authorization', this.getToken())
+  return this._http.put(this.url + "editarUsuario/" + usuario._id, params , {headers: headersToken})
 }
 eliminarUsuario(id: String): Observable<any>{
   return this._http.delete(this.url +"eliminarUsuario/" + id, {headers: this.headersVariable})
 }
 
 obtenerUsuario(id: String): Observable<any>{
-  return this._http.post(this.url +"obtenerUsuarioID/" + id, {headers: this.headersVariable})
+  return this._http.get(this.url +"obtenerUsuarioID/" + id, {headers: this.headersVariable})
 }
 verCuenta() : Observable<any>{
-  return this._http.get(this.url + 'verCuenta', {headers: this.headersVariable});
+  let headersToken = this.headersVariable.set('Authorization', this.getToken());
+  return this._http.get(this.url + 'verCuenta', {headers: headersToken});
  }
  //************************************************************************************************* */
  registrarDoctor(usuario: Usuario, token: any): Observable<any>{

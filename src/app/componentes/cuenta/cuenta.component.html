@@ -13,7 +13,7 @@
             <div class="contenedor2">
                 <br>
 
-                <h1 class="lines-effect">Bienvenido {{ identidad.username }}</h1>
+                <h1 class="lines-effect">Bienvenido {{ usuarios.username }}</h1>
             </div>
             <div class="portfoliocard">
                 <div class="coverphoto"></div>
@@ -25,11 +25,11 @@
                         <img *ngIf="_usuarioService.getIdentidad().imagen" [src]="this.url + 'obtenerArchivoImagen/' +_usuarioService.getIdentidad().imagen" class="user-image">
                         <img class="nav-link" routerLink="/cuenta" routerLinkActive="active" *ngIf="_usuarioService.getIdentidad().imagen == null && this._usuarioService.getIdentidad().username!=undefined" src="/assets/man.png" class="user-image">
                     </div>
-                    <h2 class="name">{{ identidad.username }}</h2>
+                    <h2 class="name">{{ usuarios.username }}</h2>
                     <ul class="contact_information">
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario" (click)="obtenerUsuarioId(identidad._id)">Editar</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalVer" (click)="obtenerUsuarioId(identidad._id)">Ver</button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario" (click)="obtenerUsuarioId(identidad._id)">Eliminar</button>
+                        <button type="button" class="btn btn-warning" (click)="obtenerUsuarioId(usuarios._id) " data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</button>
+                        <button type="button" class="btn btn-primary" (click)="obtenerUsuarioId(usuarios._id)" data-bs-toggle="modal" data-bs-target="#exampleModalVer">Ver</button>
+                        <button type="button" class="btn btn-danger" (click)="obtenerUsuarioId(usuarios._id)" data-bs-toggle="modal" data-bs-target="#modalEliminarUsuario">Eliminar</button>
                     </ul>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                             <form>
                                 <div class="mb-3">
                                     <label for="inputUsername" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="inputUsername" name="username" #username="ngModel" [(ngModel)]="identidad.username">
+                                    <input type="text" class="form-control" id="inputUsername" name="username" #username="ngModel" [(ngModel)]="idUsuarioModel.username">
                                 </div>
                             </form>
                         </div>
@@ -83,7 +83,7 @@
 
                                 <div class="mb-3">
                                     <label for="inputUsername" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="inputUsername" name="username" #username="ngModel" [(ngModel)]="identidad.username" disabled>
+                                    <input type="text" class="form-control" id="inputUsername" name="username" #username="ngModel" [(ngModel)]="idUsuarioModel.username" disabled>
                                 </div>
                             </form>
                         </div>
@@ -102,11 +102,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ¿Esta seguro de que desea eliminar el Usuario, {{ identidad.username }}?
+                            ¿Esta seguro de que deseas eliminar tu Usuario, {{ idUsuarioModel.username }}?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            <button routerLink="/registro" routerLinkActive="active" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarUsuario(usuarios._id)">Si, eliminar</button>
+                            <button routerLink="/registrar" routerLinkActive="active" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarUsuario(usuarios._id)">Si, eliminar</button>
                         </div>
                     </div>
                 </div>

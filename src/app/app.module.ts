@@ -15,6 +15,7 @@ import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { DoctorComponent } from './componentes/doctor/doctor.component';
 import { EnfermedadesComponent } from './componentes/enfermedades/enfermedades.component';
 import { EnfermedadComponent } from './componentes/enfermedad/enfermedad.component';
+import { AdminprincipalComponent } from './componentes/adminprincipal/adminprincipal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { EnfermedadComponent } from './componentes/enfermedad/enfermedad.compone
     CuentaComponent,
     DoctorComponent,
     EnfermedadesComponent,
-    EnfermedadComponent
+    EnfermedadComponent,
+    AdminprincipalComponent
   ],
   imports: [
     BrowserModule,

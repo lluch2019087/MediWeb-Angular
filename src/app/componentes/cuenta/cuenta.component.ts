@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/usuario.model';
 import { GLOBAL } from 'src/app/servicios/global.service';
 import { ImagenService } from 'src/app/servicios/imagen.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import Swal from "sweetalert2"
 
 @Component({
   selector: 'app-cuenta',
@@ -19,7 +21,7 @@ export class CuentaComponent implements OnInit {
   public id = "";
   constructor(
     public _usuarioService: UsuarioService, public _imagenService: ImagenService,
-  ) {
+    private _router: Router) {
     this.identidad = this._usuarioService.getIdentidad();
     this.idUsuarioModel = new Usuario("","","","","");
     this.token = _usuarioService.getToken();
@@ -28,7 +30,6 @@ export class CuentaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.identidad.username)
     this.obtenerCuenta();
   }
 
@@ -49,10 +50,8 @@ export class CuentaComponent implements OnInit {
   obtenerCuenta(){
     this._usuarioService.verCuenta().subscribe(
       response => {
-        this.identidad = response.usuarioEncontrado;
+        this.usuarios = response.usuarioEncontrado;
         console.log(response.usuarioEncontrado)
-
-
       },
       error => {
         console.log(<any>error);
@@ -60,12 +59,12 @@ export class CuentaComponent implements OnInit {
     )
   }
 
-  obtenerUsuarioId(_id: any){
-    this.id = _id;
-    this._usuarioService.obtenerUsuario(_id).subscribe(
+  obtenerUsuarioId(idUsuario: any){
+    this._usuarioService.obtenerUsuario(idUsuario).subscribe(
       response=>{
-        console.log(response.usuarioEncontrado);
+
         this.idUsuarioModel = response.usuarioEncontrado;
+        console.log(response);
 
       }
     )
@@ -86,7 +85,14 @@ export class CuentaComponent implements OnInit {
     this._usuarioService.eliminarUsuario(idUsuario).subscribe(
       response=>{
         console.log(response);
-
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Haz eliminado tu cuenta correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this._router.navigate[('/registro')];
        localStorage.clear();
       },error=>{
         console.log(<any>error)

@@ -53,18 +53,17 @@ export class DoctorComponent implements OnInit {
   ObtenerDoctores(){
     this._usuarioService.ObtenerDoctores().subscribe(
       response => {
-         console.log(response.usuarios_registrados);
-         this.usuariosLista = response.usuarios_registrados
 
+         this.usuariosLista = response.usuarios_registrados
+         console.log(response.usuarios_registrados);
       },
       error => {
         console.log(<any>error);
       })
   }
 
-  obtenerDoctor(_id: any){
-    this.idUSuario=_id;
-    this._usuarioService.obtenerDoctor(this.idUSuario).subscribe(
+  obtenerDoctor(idUSuario: any){
+    this._usuarioService.obtenerDoctor(idUSuario).subscribe(
       response => {
         this.modeloUsuario = response.usuario_registrado
         console.log(response.usuario_registrado);
@@ -83,6 +82,13 @@ export class DoctorComponent implements OnInit {
     this._usuarioService.eliminarDoctor(id).subscribe(
       response => {
         console.log(response)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Haz eliminado al Doctor correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.ObtenerDoctores();
       }
     )
