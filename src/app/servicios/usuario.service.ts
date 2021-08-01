@@ -123,6 +123,13 @@ editarEnfermedad(enfermedad: any): Observable<any>{
   return this._http.put(this.url+"editarEnfermedad/"+ enfermedad._id, params, {headers: headersToken});
 }
 
+obtenerEnfermedad(nombre: any): Observable<any>{
+
+  let params = JSON.stringify(nombre);
+
+  return this._http.post(this.url+'obtenerEnfermedad', params, {headers: this.headersVariable});
+}
+
 obtenerEnfermedadID(id: String): Observable<any>{
   let headersToken = this.headersVariable.set("Authorization", this.getToken());
   return this._http.get(this.url+"obtenerEnfermedadID/"+id, {headers: headersToken});
