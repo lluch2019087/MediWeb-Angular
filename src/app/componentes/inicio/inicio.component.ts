@@ -1,23 +1,32 @@
-import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+=======
+>>>>>>> master
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
+<<<<<<< HEAD
   styleUrls: ['./inicio.component.scss'],
   providers: [UsuarioService]
+=======
+  styleUrls: ['./inicio.component.scss']
+>>>>>>> master
 })
 export class InicioComponent implements OnInit {
-  public nombreBuscar: any = {nombre: ''};
-  public nombreSeleccionado: any;
 
+<<<<<<< HEAD
   constructor(public _usuarioService: UsuarioService, public _router: Router) { }
+=======
+  constructor() { }
+>>>>>>> master
 
   ngOnInit(): void {
-
+    
   }
+<<<<<<< HEAD
 
 
   buscarEnfermedadNombre(){
@@ -41,4 +50,8 @@ export class InicioComponent implements OnInit {
     )
   }
 
+=======
+  refresh(): void { window.location.reload(); }
+  
+>>>>>>> master
 }
