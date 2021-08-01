@@ -11,6 +11,7 @@ import { ListausuariosComponent } from './componentes/listausuarios/listausuario
 import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
+import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
 
 const routes: Routes = [
   {path: "principal", component: PrincipalComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: "listausuarios", component: ListausuariosComponent},
   {path: "adminDoctor", component: EnfermedadComponent},
   {path: "enfermedadEncontrada", component: EnfermedadEncontradaComponent},
+  {path: "doctorprincipal", component: DoctorprincipalComponent},
   {path: "**", component: PrincipalComponent}
 
 ];

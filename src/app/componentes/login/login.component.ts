@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
         }else if(this.identidad.rol==="ROL_DOCTOR"){
 
-          this._router.navigate(["/inicio"]);
+          this._router.navigate(["/doctorprincipal"]);
 
           console.log(this.identidad.rol)
         }
