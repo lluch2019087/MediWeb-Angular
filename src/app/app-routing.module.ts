@@ -1,3 +1,4 @@
+import { EnfermedadComponent } from './componentes/enfermedad/enfermedad.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminprincipalComponent } from './componentes/adminprincipal/adminprincipal.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "enfermedades", component: EnfermedadesComponent},
   {path: "adminprincipal", component: AdminprincipalComponent},
   {path: "listausuarios", component: ListausuariosComponent},
+  {path: "adminDoctor", component: EnfermedadComponent},
   {path: "**", component: PrincipalComponent}
 
 ];

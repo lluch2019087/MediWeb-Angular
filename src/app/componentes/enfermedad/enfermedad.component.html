@@ -1,1 +1,49 @@
-<p>enfermedad works!</p>
+<form>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre Enfermedad</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="nombre" #nombre="ngModel" [(ngModel)]="enfermedadModel.nombre">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="enfermedadModel.descripcion">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Síntomas</label>
+        <input type="text" class="form-control" id="sintomas" name="sintomas" #sintomas="ngModel" [(ngModel)]="enfermedadModel.sintomas">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="registrarEnfermedad()">Agregar Enfermedad</button>
+</form>
+<br><br>
+<div>
+    <form>
+
+        <label>Elija la enfermedad que desea editar</label>
+        <select class="form-select" placeholder="name" aria-label="seleccione una enfermedad" name="editar" #editar="ngModel" [(ngModel)]="enfermedadModel1._id" selected>
+    <option selected> </option>
+  <option *ngFor="let enf of enfermedadesObtenidas" value="{{enf._id}}">{{enf.nombre}}</option>
+</select>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre Enfermedad</label>
+            <input type="text" placeholder="name" class="form-control" id="name1" aria-describedby="emailHelp" name="nombre1" #nombre1="ngModel" [(ngModel)]="enfermedadModel1.nombre">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Descripción</label>
+            <input type="text" placeholder="name" class="form-control" id="descripcion1" name="descripcion1" #descripcion1="ngModel" [(ngModel)]="enfermedadModel1.descripcion">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Síntomas</label>
+            <input type="text" placeholder="name" class="form-control" id="sintomas1" name="sintomas1" #sintomas1="ngModel" [(ngModel)]="enfermedadModel1.sintomas">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="editar.value = ''" (click)="sintomas1.value = ''" (click)="descripcion1.value = ''" (click)="nombre1.value = ''" (click)="editarEnfermedad()">Editar Enfermedad</button>
+    </form>
+</div>
+<br><br>
+<div>
+    <label>Elija la enfermedad que desea eliminar</label>
+    <select class="form-select" aria-label="seleccione una enfermedad" name="eliminar" #eliminar="ngModel" [(ngModel)]="this.idEliminarEnfermedad.id" selected>
+      <option selected> </option>
+    <option *ngFor="let enf of enfermedadesObtenidas" value="{{enf._id}}">{{enf.nombre}}</option>
+
+  </select>
+    <button type="submit" class="btn btn-primary" (click)="eliminarEnfermedad()">Eliminar Enfermedad</button>
+</div>
