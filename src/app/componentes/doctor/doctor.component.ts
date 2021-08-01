@@ -39,6 +39,8 @@ export class DoctorComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+        this.ObtenerDoctores();
+
         //this._router.navigate(["/login"]);
       },
       error=>{
