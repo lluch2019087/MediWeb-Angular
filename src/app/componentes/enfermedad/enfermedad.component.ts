@@ -17,7 +17,7 @@ export class EnfermedadComponent implements OnInit {
   public enfermedadesObtenidas: any;
 
 
-  constructor(private _usuarioService: UsuarioService) { }
+  constructor(public _usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.obtenerEnfermedades(this._usuarioService.getIdentidad()._id);
