@@ -12,6 +12,7 @@ export class UsuarioService {
   public url: String;
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
   public token: any;
+  public enfermedad: any;
   public identidad: any;
   constructor(public _http: HttpClient) {
   this.url = GLOBAL.url
@@ -133,6 +134,16 @@ obtenerEnfermedad(nombre: any): Observable<any>{
 obtenerEnfermedadID(id: String): Observable<any>{
   let headersToken = this.headersVariable.set("Authorization", this.getToken());
   return this._http.get(this.url+"obtenerEnfermedadID/"+id, {headers: headersToken});
+}
+
+getEnfermedad(){
+  var enfermedad2 = JSON.parse(localStorage.getItem("nombreSeleccionado"));
+  if(enfermedad2 != "undefined"){
+    this.enfermedad = enfermedad2;
+  }else {
+    this.enfermedad = null;
+  }
+  return this.enfermedad;
 }
 
 }
