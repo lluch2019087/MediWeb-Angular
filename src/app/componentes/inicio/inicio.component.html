@@ -19,8 +19,8 @@
         <div class="container-fluid" style="background-color: rgb(255, 255, 255)">
             <a class="navbar-brand">Bienvenido</a>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar enfermedades" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                <input class="form-control me-2" type="search" placeholder="Buscar enfermedades" aria-label="Search" name="buscar" #buscar="ngModel" [(ngModel)]="nombreBuscar.nombre">
+                <button class="btn btn-outline-success" type="submit" (click)="buscarEnfermedadNombre()">Buscar</button>
             </form>
         </div>
     </nav>

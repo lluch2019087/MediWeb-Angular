@@ -1,26 +1,26 @@
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
-  providers: [UsuarioService, Router]
+  providers: [UsuarioService]
 })
 export class InicioComponent implements OnInit {
   public nombreBuscar: any = {nombre: ''};
   public nombreSeleccionado: any;
 
-  constructor(public _usuarioService: UsuarioService, private _router: Router) { }
+  constructor(public _usuarioService: UsuarioService, public _router: Router) { }
 
   ngOnInit(): void {
 
   }
-  refresh(): void { window.location.reload(); }
 
-  buscarHotelNombre(nombre: any){
-    this.nombreBuscar.nombre = nombre;
+
+  buscarEnfermedadNombre(){
 
     this._usuarioService.obtenerEnfermedad(this.nombreBuscar).subscribe(
       response=>{
@@ -31,6 +31,11 @@ export class InicioComponent implements OnInit {
       },
       error=>{
         console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'NO se encontró esa enfermedad'
+        })
 
       }
     )
