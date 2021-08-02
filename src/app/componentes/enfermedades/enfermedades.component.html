@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary btn-lg" routerLink="/inicio" routerLinkActive="active">Regresar</button>
+<button type="button" class="btn btn-primary" routerLink="/inicio" routerLinkActive="active">Regresar</button>
 
 <body>
     <h1 class="lines-effect">Bienvenido a la biblioteca MediWeb</h1>
@@ -17,20 +17,22 @@
         <br>
         <h2 class="titulo"> Informacion sobre enfermedades</h2>
         <br>
-        <div id="enfermedades">
+        <div id="htmlData">
             <div class="row">
-                <div class="col-xs-10 col-sm-2" *ngFor="let enf of enfermedades">
+
+                <div class="col-xs-10 col-sm-4 mb-4" *ngFor="let enf of enfermedades">
                     <div class="card-header">
-                        Enfermedad: {{enf.nombre}}
+                        <b>Enfermedad: {{enf.nombre}}</b>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Descripcion: {{enf.descripcion}}</li>
                         <li class="list-group-item">Síntomas: {{enf.sintomas}}</li>
+                        <li class="list-group-item">Autor: {{enf.doctor}}</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <button type="button" style="margin: 10px" class="btn btn-primary">Imprimir</button>
+
     </header>
 </body>
