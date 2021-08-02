@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Usuario } from 'src/app/modelos/usuario.model';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from 'html-to-pdfmake';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -12,7 +18,6 @@ import Swal from 'sweetalert2';
 
 })
 export class ListausuariosComponent implements OnInit {
-
   public usuariosLista: any;
   public idUSuario =  ''
   public modeloUsuario: Usuario;
@@ -24,7 +29,30 @@ export class ListausuariosComponent implements OnInit {
     {
     this.token = this._usuarioService.getToken();
     this.modeloUsuario = new Usuario("","","","","");
-   }
+    this.downloadPDF();
+  }
+  public downloadPDF() {
+    const DATA = document.getElementById('htmlData');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+
+      // Add image Canvas to PDF
+      const bufferX = 0;
+      const bufferY = 2;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${new Date().toISOString()}_usuarios.pdf`);
+    });
+  }
 
   ngOnInit(): void {
     this.ObtenerUsuarios();
@@ -99,5 +127,7 @@ export class ListausuariosComponent implements OnInit {
 
    }
 
-}
+  }
+
+
 

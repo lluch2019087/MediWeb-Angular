@@ -17,16 +17,20 @@
         <br>
         <h2 class="titulo"> Informacion sobre enfermedades</h2>
         <br>
-        <div class="row">
-            <div class="col-xs-10 col-sm-2" *ngFor="let enf of enfermedades">
-                <div class="card-header">
-                    Enfermedad: {{enf.nombre}}
+        <div id="enfermedades">
+            <div class="row">
+                <div class="col-xs-10 col-sm-2" *ngFor="let enf of enfermedades">
+                    <div class="card-header">
+                        Enfermedad: {{enf.nombre}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Descripcion: {{enf.descripcion}}</li>
+                        <li class="list-group-item">Síntomas: {{enf.sintomas}}</li>
+                    </ul>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Descripcion: {{enf.descripcion}}</li>
-                    <li class="list-group-item">Síntomas: {{enf.sintomas}}</li>
-                </ul>
             </div>
         </div>
+
+        <button type="button" style="margin: 10px" class="btn btn-primary">Imprimir</button>
     </header>
 </body>

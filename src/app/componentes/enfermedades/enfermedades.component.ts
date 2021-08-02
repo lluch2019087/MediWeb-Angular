@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-enfermedades',
   templateUrl: './enfermedades.component.html',
@@ -11,9 +12,10 @@ export class EnfermedadesComponent implements OnInit {
   public enfermedades: any;
 
   constructor(
-    private _usuarioService: UsuarioService
-  ) { }
+    private _usuarioService: UsuarioService,
+  ){
 
+  }
   ngOnInit(): void {
     this.obtenerEnfermedades();
   }
@@ -27,10 +29,9 @@ export class EnfermedadesComponent implements OnInit {
       },error=>{
         console.log(<any>error)
       }
+    )}
 
-    )
 
   }
 
 
-}

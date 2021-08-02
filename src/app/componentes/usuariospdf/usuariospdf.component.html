@@ -1,0 +1,33 @@
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div id="htmlData">
+                <br>
+                <h2>Lista de usuarios</h2>
+                <br>
+                <table class="table table-dark table-hover" id="usuariospa">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usua of usuariosLista">
+                            <th scope="row">{{usua._id}}</th>
+                            <td>{{usua.username}}</td>
+                            <td>{{usua.rol}}</td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
+    </div>
+</body>

@@ -12,6 +12,8 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
 import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
+import { GraficasComponent } from './componentes/graficas/graficas.component';
+import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
 
 const routes: Routes = [
   {path: "principal", component: PrincipalComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: "adminDoctor", component: EnfermedadComponent},
   {path: "enfermedadEncontrada", component: EnfermedadEncontradaComponent},
   {path: "doctorprincipal", component: DoctorprincipalComponent},
+  {path: "graficas", component: GraficasComponent},
+  {path: "usuariospdf", component: UsuariospdfComponent},
   {path: "**", component: PrincipalComponent}
 
 ];

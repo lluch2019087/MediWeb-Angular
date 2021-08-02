@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ChartsModule } from '@rinminase/ng-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
@@ -19,6 +19,8 @@ import { AdminprincipalComponent } from './componentes/adminprincipal/adminprinc
 import { ListausuariosComponent } from './componentes/listausuarios/listausuarios.component';
 import { EnfermedadEncontradaComponent } from './componentes/enfermedad-encontrada/enfermedad-encontrada.component';
 import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
+import { GraficasComponent } from './componentes/graficas/graficas.component';
+import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
 
 
 @NgModule({
@@ -36,14 +38,17 @@ import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorpr
     AdminprincipalComponent,
     ListausuariosComponent,
     EnfermedadEncontradaComponent,
-    DoctorprincipalComponent
+    DoctorprincipalComponent,
+    GraficasComponent,
+    UsuariospdfComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
