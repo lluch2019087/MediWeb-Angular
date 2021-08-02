@@ -31,7 +31,7 @@ export class CuentaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.listarPreguntas();
+    this.listarPreguntasUsuario();
     this.obtenerCuenta();
   }
 
@@ -103,10 +103,11 @@ export class CuentaComponent implements OnInit {
 
   }
 
-  listarPreguntas(){
+  listarPreguntasUsuario(){
     this._usuarioService.listarPreguntasUsuario().subscribe(
       response=>{
         this.preguntas = response.preguntasEncontradas;
+        console.log(response.preguntasEncontradas);
     },error=>{
       console.log(<any>error)
     }
