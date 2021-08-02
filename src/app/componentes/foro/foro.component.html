@@ -1,10 +1,11 @@
-<nav class="navbar navbar-light bg-light" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_USUARIO'">
+<nav class="navbar navbar-light bg-light">
     <div class="container-fluid" style="background-color: rgb(255, 255, 255)">
         <a class="navbar-brand">Bienvenido</a>
         <form class="d-flex">
-            <button style="margin: 10px" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Hacer Pregunta</button>
-            <button style="margin: 10px" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalEditar" data-bs-whatever="@getbootstrap">Editar Pregunta</button>
-            <button style="margin: 10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminar" data-bs-whatever="@getbootstrap">Eliminar Pregunta</button>
+            <button style="margin: 10px" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_USUARIO'">Hacer Pregunta</button>
+            <button style="margin: 10px" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalEditar" data-bs-whatever="@getbootstrap" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_USUARIO'">Editar Pregunta</button>
+            <button style="margin: 10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminar" data-bs-whatever="@getbootstrap" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_USUARIO'">Eliminar Pregunta</button>
+            <button style="margin: 10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@getbootstrap" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_DOCTOR'">Responder</button>
 
         </form>
     </div>
@@ -90,6 +91,78 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" (click)="this.eliminarPregunta()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Identificación</th>
+            <th scope="col">Título</th>
+            <th scope="col">Pregunta</th>
+            <th scope="col">id del usuario</th>
+            <th scope="col">botones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pr of preguntas2">
+            <th scope="row">{{pr._id}}</th>
+            <td>{{pr.titulo}}</td>
+            <td>{{pr.pregunta}}</td>
+            <td>{{pr.usuario}}</td>
+            <td>
+                <button style="margin: 10px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver Respuestas</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Responder</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <select type="text" class="form-select" name="idCom" #idCom="ngModel" [(ngModel)]="this.comentarioModel.id">
+              <option selected=""></option>
+          <option *ngFor="let pr2 of preguntas2" value="{{pr2._id}}">{{pr2.titulo}}</option>
+        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Comentario:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="comentario" #comentario="ngModel" [(ngModel)]="this.comentarioModel.comentario">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="this.agregarComenarioDoc()">Agregar Respuesta</button>
             </div>
         </div>
     </div>

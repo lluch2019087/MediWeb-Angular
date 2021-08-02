@@ -174,8 +174,8 @@ eliminarPregunta(id: String):Observable<any>{
   return this._http.delete(this.url+'eliminarPregunta/'+id,{headers: headersToken});
 }
 
-agregarComentarioDoc(comentario: any):Observable<any>{
-  let params = JSON.stringify(comentario);
+agregarComentarioDoc(comentarioModel: any):Observable<any>{
+  let params = JSON.stringify(comentarioModel);
   let headersToken = this.headersVariable.set("Authorization", this.getToken());
 
   return this._http.post(this.url+'agregarComentarioDoc', params, {headers: headersToken});

@@ -10,13 +10,28 @@ import Swal from 'sweetalert2';
 })
 export class ForoComponent implements OnInit {
   public preguntaModel: any = {titulo: "", pregunta: ""};
+  public comentarioModel: any = {id: "", comentario: ""};
   public id: String;
   public preguntas: any;
+  public preguntas2: any;
+  public comentarios: any;
 
   constructor(public _usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.listarPreguntasUsuario();
+    this.listarPreguntas();
+  }
+
+  listarPreguntas(){
+    this._usuarioService.listarPreguntas().subscribe(
+      response=>{
+        this.preguntas2 = response.preguntasEncontradas;
+        console.log(response.preguntasEncontradas);
+    },error=>{
+      console.log(<any>error)
+    }
+    )
   }
 
 
@@ -38,7 +53,6 @@ export class ForoComponent implements OnInit {
     this._usuarioService.listarPreguntasUsuario().subscribe(
       response=>{
         this.preguntas = response.preguntasEncontradas;
-        console.log(response.preguntasEncontradas);
     },error=>{
       console.log(<any>error)
     }
@@ -70,6 +84,22 @@ export class ForoComponent implements OnInit {
         )
     },error=>{
       console.log(<any>error)
+    }
+    )
+
+  }
+
+  agregarComenarioDoc(){
+    this._usuarioService.agregarComentarioDoc(this.comentarioModel).subscribe(
+      response=>{
+        this.comentarios = response.pregunta;
+        console.log(response.pregunta);
+        Swal.fire(
+          'Respondió a esta pregunta'
+        )
+    },error=>{
+      console.log(<any>error);
+      console.log(this.comentarioModel)
     }
     )
 
