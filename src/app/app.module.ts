@@ -21,6 +21,7 @@ import { EnfermedadEncontradaComponent } from './componentes/enfermedad-encontra
 import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
 import { GraficasComponent } from './componentes/graficas/graficas.component';
 import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
+import { ForoComponent } from './componentes/foro/foro.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.comp
     EnfermedadEncontradaComponent,
     DoctorprincipalComponent,
     GraficasComponent,
-    UsuariospdfComponent
+    UsuariospdfComponent,
+    ForoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { ForoComponent } from './componentes/foro/foro.component';
 import { EnfermedadEncontradaComponent } from './componentes/enfermedad-encontrada/enfermedad-encontrada.component';
 import { EnfermedadComponent } from './componentes/enfermedad/enfermedad.component';
 import { NgModule } from '@angular/core';
@@ -11,9 +12,9 @@ import { ListausuariosComponent } from './componentes/listausuarios/listausuario
 import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
+import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
 import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
 import { GraficasComponent } from './componentes/graficas/graficas.component';
-import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
 
 const routes: Routes = [
   {path: "principal", component: PrincipalComponent},
@@ -30,7 +31,9 @@ const routes: Routes = [
   {path: "doctorprincipal", component: DoctorprincipalComponent},
   {path: "graficas", component: GraficasComponent},
   {path: "usuariospdf", component: UsuariospdfComponent},
+  {path: "foro", component: ForoComponent},
   {path: "**", component: PrincipalComponent}
+
 
 ];
 

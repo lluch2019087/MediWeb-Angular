@@ -1,0 +1,96 @@
+<nav class="navbar navbar-light bg-light" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_USUARIO'">
+    <div class="container-fluid" style="background-color: rgb(255, 255, 255)">
+        <a class="navbar-brand">Bienvenido</a>
+        <form class="d-flex">
+            <button style="margin: 10px" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Hacer Pregunta</button>
+            <button style="margin: 10px" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalEditar" data-bs-whatever="@getbootstrap">Editar Pregunta</button>
+            <button style="margin: 10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalEliminar" data-bs-whatever="@getbootstrap">Eliminar Pregunta</button>
+
+        </form>
+    </div>
+</nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Pregunta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="col-form-label">Título:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="titulo" #titulo="ngModel" [(ngModel)]="preguntaModel.titulo">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Pregunta:</label>
+                        <input type="text" class="form-control" name="pregunta" #pregunta="ngModel" [(ngModel)]="preguntaModel.pregunta">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="this.crearPregunta()">Crear Pregunta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Pregunta:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <select type="text" class="form-select" name="_id" #_id="ngModel" [(ngModel)]="id">
+                      <option selected=""></option>
+                  <option *ngFor="let pr of preguntas" value="{{pr._id}}">{{pr.titulo}}</option>
+                </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name1" class="col-form-label">Título:</label>
+                        <input type="text" class="form-control" id="recipient-name1" name="tituloEd" #tituloEd="ngModel" [(ngModel)]="preguntaModel.titulo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Pregunta:</label>
+                        <input type="text" class="form-control" id="message-text1" name="preguntaEditar" #preguntaEditar="ngModel" [(ngModel)]="preguntaModel.pregunta">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="this.editarPregunta()">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Pregunta:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <select type="text" class="form-select" name="_id" #_id="ngModel" [(ngModel)]="id">
+                  <option selected=""></option>
+              <option *ngFor="let pr of preguntas" value="{{pr._id}}">{{pr.titulo}}</option>
+            </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="this.eliminarPregunta()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
