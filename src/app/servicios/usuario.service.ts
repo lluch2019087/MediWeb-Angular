@@ -146,6 +146,27 @@ getEnfermedad(){
   return this.enfermedad;
 }
 
+
+
+
+//************************************************************************************************* */
+
+
+listarPreguntas():Observable<any>{
+
+  return this._http.get(this.url+'listarPreguntas',{headers: this.headersVariable});
+}
+
+listarPreguntasUsuario():Observable<any>{
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.get(this.url+'listarPreguntasUsuario',{headers: headersToken});
+}
+
+eliminarPregunta(id: String):Observable<any>{
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+  return this._http.delete(this.url+'eliminarPregunta/'+id,{headers: headersToken});
+}
+
 }
 
 

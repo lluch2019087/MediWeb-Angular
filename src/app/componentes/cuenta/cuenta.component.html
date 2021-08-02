@@ -115,6 +115,26 @@
 
         </div>
     </header>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">identificacion</th>
+                <th scope="col">titulo</th>
+                <th scope="col">pregunta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pr of preguntas">
+                <th scope="row">{{pr._id}}</th>
+                <td>{{pr.titulo}}</td>
+                <td>{{pr.pregunta}}</td>
+            </tr>
+
+
+        </tbody>
+    </table>
 </body>
 
 </html>

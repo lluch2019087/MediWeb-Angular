@@ -19,6 +19,7 @@ export class CuentaComponent implements OnInit {
   public idUsuarioModel: Usuario;
   public identidad;
   public id = "";
+  public preguntas: any;
   constructor(
     public _usuarioService: UsuarioService, public _imagenService: ImagenService,
     private _router: Router) {
@@ -30,6 +31,7 @@ export class CuentaComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.listarPreguntas();
     this.obtenerCuenta();
   }
 
@@ -98,4 +100,18 @@ export class CuentaComponent implements OnInit {
         console.log(<any>error)
       }
     )
-  }}
+
+  }
+
+  listarPreguntas(){
+    this._usuarioService.listarPreguntasUsuario().subscribe(
+      response=>{
+        this.preguntas = response.preguntasEncontradas;
+    },error=>{
+      console.log(<any>error)
+    }
+    )
+  }
+
+
+}
