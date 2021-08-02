@@ -151,6 +151,13 @@ getEnfermedad(){
 
 //************************************************************************************************* */
 
+crearPregunta(pregunta: any):Observable<any>{
+  let params = JSON.stringify(pregunta);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.post(this.url+'crearPregunta', params, {headers: headersToken});
+
+}
 
 listarPreguntas():Observable<any>{
 
@@ -166,6 +173,22 @@ eliminarPregunta(id: String):Observable<any>{
   let headersToken = this.headersVariable.set("Authorization", this.getToken());
   return this._http.delete(this.url+'eliminarPregunta/'+id,{headers: headersToken});
 }
+
+agregarComentarioDoc(comentario: any):Observable<any>{
+  let params = JSON.stringify(comentario);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.post(this.url+'agregarComentarioDoc', params, {headers: headersToken});
+
+}
+
+editarPregunta(pregunta: any, id: String): Observable<any>{
+  let params = JSON.stringify(pregunta);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.put(this.url+'editarPregunta/'+id,params, {headers: headersToken});
+}
+
 
 }
 
