@@ -12,6 +12,9 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/inicio" routerLinkActive="active" *ngIf="this._usuarioService.getIdentidad().username!=undefined">Inicio</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/adminprincipal" routerLinkActive="active" *ngIf="this._usuarioService.getIdentidad().rol=='ROL_DOCTOR'">Administrar</a>
+                </li>
 
 
             </ul>
