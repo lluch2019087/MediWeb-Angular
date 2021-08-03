@@ -1,4 +1,4 @@
-<div class="mb-3">
+<div class="mb-3" *ngIf="this._enfermedadService.getIdentidad().rol=='ROL_DOCTOR' || this._enfermedadService.getIdentidad().rol=='ROL_ADMIN'">
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Contagiados</label>
         <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="contagiados" #contagiados="ngModel" [(ngModel)]="this.covidModel.contagiados">

@@ -32,7 +32,7 @@ charTypes =[
   }];
   chartLegend = true;
   chartPlugins = [];
-  constructor(private _enfermedadService: UsuarioService) { }
+  constructor(public _enfermedadService: UsuarioService) { }
 
   ngOnInit(): void {
     this.listarCovid();
