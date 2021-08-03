@@ -15,12 +15,8 @@ import { RegistrarComponent } from './componentes/registrar/registrar.component'
 import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
 import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
 import { GraficasComponent } from './componentes/graficas/graficas.component';
-<<<<<<< HEAD
-import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
 import { MedicamentosComponent } from './componentes/medicamentos/medicamentos.component';
 import { ListamedicamentosComponent } from './componentes/listamedicamentos/listamedicamentos.component';
-=======
->>>>>>> master
 
 const routes: Routes = [
   {path: "principal", component: PrincipalComponent},
@@ -37,12 +33,9 @@ const routes: Routes = [
   {path: "doctorprincipal", component: DoctorprincipalComponent},
   {path: "graficas", component: GraficasComponent},
   {path: "usuariospdf", component: UsuariospdfComponent},
-<<<<<<< HEAD
   {path: "medicamentos", component: MedicamentosComponent},
   {path: "listamedicamentos", component: ListamedicamentosComponent},
-=======
   {path: "foro", component: ForoComponent},
->>>>>>> master
   {path: "**", component: PrincipalComponent}
 
 
