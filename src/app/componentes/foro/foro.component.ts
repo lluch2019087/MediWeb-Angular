@@ -42,9 +42,13 @@ export class ForoComponent implements OnInit {
     this._usuarioService.crearPregunta(this.preguntaModel).subscribe(
       response=>{
       console.log(response.preguntaGuardada);
-      Swal.fire(
-        'Pregunta hecha'
-      )
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Pregunta realizada correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.listarPreguntasUsuario();
     this.listarPreguntas();
     },error=>{
@@ -69,9 +73,13 @@ export class ForoComponent implements OnInit {
       response=>{
         this.preguntas = response.preguntaActualizada;
         console.log(response.preguntaActualizada);
-        Swal.fire(
-          'Pregunta editada'
-        )
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Pregunta editada',
+          showConfirmButton: false,
+          timer: 1500
+        })
     },error=>{
       console.log(<any>error)
     }
@@ -86,9 +94,13 @@ export class ForoComponent implements OnInit {
       response=>{
         this.preguntas = response.preguntaEliminada;
         console.log(response.preguntaEliminada);
-        Swal.fire(
-          'Pregunta eliminada'
-        )
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Pregunta eliminada',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.listarPreguntasUsuario();
     this.listarPreguntas();
     },error=>{
@@ -103,9 +115,13 @@ export class ForoComponent implements OnInit {
       response=>{
         this.comentarios = response.pregunta;
         console.log(response.pregunta);
-        Swal.fire(
-          'Respondió a esta pregunta'
-        )
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Pregunta agregada',
+          showConfirmButton: false,
+          timer: 1500
+        })
     },error=>{
       console.log(<any>error);
       console.log(this.comentarioModel)
@@ -121,6 +137,7 @@ export class ForoComponent implements OnInit {
       response=>{
         this.comentariosEncontrados = response.preguntaEncontrada1;
         console.log(response.preguntaEncontrada1);
+
 
     },error=>{
       console.log(<any>error);
