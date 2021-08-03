@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Medicamentos } from '../modelos/medicamentos.model';
 import { Usuario } from '../modelos/usuario.model';
 import { GLOBAL } from './global.service';
 
@@ -136,15 +137,6 @@ obtenerEnfermedadID(id: String): Observable<any>{
   return this._http.get(this.url+"obtenerEnfermedadID/"+id, {headers: headersToken});
 }
 
-getEnfermedad(){
-  var enfermedad2 = JSON.parse(localStorage.getItem("nombreSeleccionado"));
-  if(enfermedad2 != "undefined"){
-    this.enfermedad = enfermedad2;
-  }else {
-    this.enfermedad = null;
-  }
-  return this.enfermedad;
-}
 
 
 
@@ -167,7 +159,40 @@ eliminarPregunta(id: String):Observable<any>{
   return this._http.delete(this.url+'eliminarPregunta/'+id,{headers: headersToken});
 }
 
+
+
+//************************************************************************************************************** */
+
+registrarMedicamento(medicamentos: Medicamentos, token: any): Observable<any>{
+  let params = JSON.stringify(medicamentos);
+  let headersToken = this.headersVariable.set("Authorization", token);
+  return this._http.post(this.url + "registrarMedicamento", params , {headers: headersToken})
 }
 
+obtenerMedicamentos(medicamento: any): Observable<any>{
+  let params = JSON.stringify(medicamento);
+
+  return this._http.post(this.url + "obtenerMedicamentos", params, {headers: this.headersVariable});
+
+}
+buscarEnfermedad(id: String):Observable<any>{
 
 
+  return this._http.post(this.url+'buscarEnfermedad/' + id, {headers: this.headersVariable});
+
+}
+obtenerMedi(id: String, token: any): Observable<any>{
+  let headersToken = this.headersVariable.set("Authorization", token);
+  return this._http.get(this.url +"obtenerMedi/" + id, {headers: headersToken})
+}
+getEnfermedad(){
+  var enfermedad2 = JSON.parse(localStorage.getItem("nombreSeleccionado"));
+  if(enfermedad2 != "undefined"){
+    this.enfermedad = enfermedad2;
+  }else {
+    this.enfermedad = null;
+  }
+  return this.enfermedad;
+}
+
+}

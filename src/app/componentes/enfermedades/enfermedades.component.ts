@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { Router } from '@angular/router';
+
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 @Component({
@@ -10,9 +12,12 @@ import html2canvas from 'html2canvas';
 })
 export class EnfermedadesComponent implements OnInit {
   public enfermedades: any;
+  public nombreBuscar = {nombre: ''};
+  public ligaSeleccionado: any;
+
 
   constructor(
-    private _usuarioService: UsuarioService,
+    private _usuarioService: UsuarioService, private _router: Router
   ){
     this.downloadPDF();}
     public downloadPDF() {
@@ -53,6 +58,22 @@ export class EnfermedadesComponent implements OnInit {
       }
     )}
 
+    buscarEnfermedad(nombre: any){
+      this.nombreBuscar.nombre = nombre;
+      this._usuarioService.buscarEnfermedad(nombre).subscribe(
+        response=>{
+          console.log(response);
+          this.ligaSeleccionado=response.enfermedadEncontrada;
+          localStorage.setItem("nombreSeleccionado",JSON.stringify(this.ligaSeleccionado));
+          this._router.navigate(['/listamedicamentos']);
+        },
+        error=>{
+          console.log(<any>error);
+
+
+        }
+      )
+    }
 
   }
 
