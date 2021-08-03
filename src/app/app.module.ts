@@ -21,8 +21,12 @@ import { EnfermedadEncontradaComponent } from './componentes/enfermedad-encontra
 import { DoctorprincipalComponent } from './componentes/doctorprincipal/doctorprincipal.component';
 import { GraficasComponent } from './componentes/graficas/graficas.component';
 import { UsuariospdfComponent } from './componentes/usuariospdf/usuariospdf.component';
+<<<<<<< HEAD
 import { MedicamentosComponent } from './componentes/medicamentos/medicamentos.component';
 import { ListamedicamentosComponent } from './componentes/listamedicamentos/listamedicamentos.component';
+=======
+import { ForoComponent } from './componentes/foro/foro.component';
+>>>>>>> master
 
 
 @NgModule({
@@ -43,8 +47,12 @@ import { ListamedicamentosComponent } from './componentes/listamedicamentos/list
     DoctorprincipalComponent,
     GraficasComponent,
     UsuariospdfComponent,
+<<<<<<< HEAD
     MedicamentosComponent,
     ListamedicamentosComponent
+=======
+    ForoComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,

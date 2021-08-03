@@ -143,6 +143,13 @@ obtenerEnfermedadID(id: String): Observable<any>{
 
 //************************************************************************************************* */
 
+crearPregunta(pregunta: any):Observable<any>{
+  let params = JSON.stringify(pregunta);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.post(this.url+'crearPregunta', params, {headers: headersToken});
+
+}
 
 listarPreguntas():Observable<any>{
 
@@ -159,6 +166,7 @@ eliminarPregunta(id: String):Observable<any>{
   return this._http.delete(this.url+'eliminarPregunta/'+id,{headers: headersToken});
 }
 
+<<<<<<< HEAD
 
 
 //************************************************************************************************************** */
@@ -167,6 +175,28 @@ registrarMedicamento(medicamentos: Medicamentos, token: any): Observable<any>{
   let params = JSON.stringify(medicamentos);
   let headersToken = this.headersVariable.set("Authorization", token);
   return this._http.post(this.url + "registrarMedicamento", params , {headers: headersToken})
+=======
+agregarComentarioDoc(comentarioModel: any):Observable<any>{
+  let params = JSON.stringify(comentarioModel);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.post(this.url+'agregarComentarioDoc', params, {headers: headersToken});
+
+}
+
+editarPregunta(pregunta: any, id: String): Observable<any>{
+  let params = JSON.stringify(pregunta);
+  let headersToken = this.headersVariable.set("Authorization", this.getToken());
+
+  return this._http.put(this.url+'editarPregunta/'+id,params, {headers: headersToken});
+}
+
+listarComentarios(id: String): Observable<any>{
+
+  return this._http.get(this.url+'listarComentarios/'+id, {headers: this.headersVariable});
+}
+
+>>>>>>> master
 }
 
 obtenerMedicamentos(medicamento: any): Observable<any>{
