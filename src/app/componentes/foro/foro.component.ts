@@ -13,6 +13,8 @@ export class ForoComponent implements OnInit {
   public comentarioModel: any = {id: "", comentario: ""};
   public id: String;
   public preguntas: any;
+  public usuarios: any;
+
   public preguntas2: any;
   public comentarios: any;
   public comentariosEncontrados: any;
