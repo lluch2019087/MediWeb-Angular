@@ -15,6 +15,7 @@ export class ForoComponent implements OnInit {
   public preguntas: any;
   public preguntas2: any;
   public comentarios: any;
+  public comentariosEncontrados: any;
 
   constructor(public _usuarioService: UsuarioService) { }
 
@@ -42,6 +43,8 @@ export class ForoComponent implements OnInit {
       Swal.fire(
         'Pregunta hecha'
       )
+      this.listarPreguntasUsuario();
+    this.listarPreguntas();
     },error=>{
       console.log(this.preguntaModel);
       console.log(<any>error);
@@ -71,6 +74,8 @@ export class ForoComponent implements OnInit {
       console.log(<any>error)
     }
     )
+    this.listarPreguntasUsuario();
+    this.listarPreguntas();
 
   }
 
@@ -82,6 +87,8 @@ export class ForoComponent implements OnInit {
         Swal.fire(
           'Pregunta eliminada'
         )
+        this.listarPreguntasUsuario();
+    this.listarPreguntas();
     },error=>{
       console.log(<any>error)
     }
@@ -102,7 +109,22 @@ export class ForoComponent implements OnInit {
       console.log(this.comentarioModel)
     }
     )
+    this.listarPreguntasUsuario();
+    this.listarPreguntas();
 
+  }
+
+  listarComentarios(id){
+    this._usuarioService.listarComentarios(id).subscribe(
+      response=>{
+        this.comentariosEncontrados = response.preguntaEncontrada1;
+        console.log(response.preguntaEncontrada1);
+
+    },error=>{
+      console.log(<any>error);
+
+    }
+    )
   }
 
 }

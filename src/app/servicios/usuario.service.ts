@@ -189,6 +189,10 @@ editarPregunta(pregunta: any, id: String): Observable<any>{
   return this._http.put(this.url+'editarPregunta/'+id,params, {headers: headersToken});
 }
 
+listarComentarios(id: String): Observable<any>{
+
+  return this._http.get(this.url+'listarComentarios/'+id, {headers: this.headersVariable});
+}
 
 }
 
