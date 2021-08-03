@@ -42,16 +42,11 @@ export class MedicamentosComponent implements OnInit {
       response=> {
         console.log(response)
         Swal.fire({
-          title: 'medicamento agregado correctamente',
-          width: 600,
-          padding: '3em',
-          background: '#fff url(/images/trees.png)',
-          backdrop: `
-            rgba(0,0,123,0.4)
-            url("/images/nyan-cat.gif")
-            left top
-            no-repeat
-          `
+          position: 'top-end',
+          icon: 'success',
+          title: 'Medicamento agregado correctamente',
+          showConfirmButton: false,
+          timer: 1500
         })
         //this._router.navigate(["/login"]);
       },
