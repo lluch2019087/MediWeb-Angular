@@ -42,7 +42,7 @@ export class MedicamentosComponent implements OnInit {
       response=> {
         console.log(response)
         Swal.fire({
-          title: 'Habitacion creada correctamente',
+          title: 'medicamento agregado correctamente',
           width: 600,
           padding: '3em',
           background: '#fff url(/images/trees.png)',
