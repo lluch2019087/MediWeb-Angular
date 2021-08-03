@@ -12,7 +12,7 @@ import html2canvas from 'html2canvas';
 })
 export class EnfermedadesComponent implements OnInit {
   public enfermedades: any;
-  public nombreBuscar = {nombre: ''};
+  public nombreBuscar: any = {nombre: ''};
   public ligaSeleccionado: any;
 
 
@@ -59,8 +59,8 @@ export class EnfermedadesComponent implements OnInit {
     )}
 
     buscarEnfermedad(nombre: any){
-      this.nombreBuscar.nombre = nombre;
-      this._usuarioService.buscarEnfermedad(nombre).subscribe(
+      this.nombreBuscar.nombre=nombre;
+      this._usuarioService.buscarEnfermedad(this.nombreBuscar).subscribe(
         response=>{
           console.log(response);
           this.ligaSeleccionado=response.enfermedadEncontrada;

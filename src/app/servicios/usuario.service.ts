@@ -202,10 +202,10 @@ obtenerMedicamentos(medicamento: any): Observable<any>{
   return this._http.post(this.url + "obtenerMedicamentos", params, {headers: this.headersVariable});
 
 }
-buscarEnfermedad(id: String):Observable<any>{
+buscarEnfermedad(nombre: any):Observable<any>{
+let params = JSON.stringify(nombre);
 
-
-  return this._http.post(this.url+'buscarEnfermedad/' + id, {headers: this.headersVariable});
+  return this._http.post(this.url+'buscarEnfermedad/', params, {headers: this.headersVariable});
 
 }
 obtenerMedi(id: String, token: any): Observable<any>{
