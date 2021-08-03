@@ -38,8 +38,14 @@ export class EnfermedadComponent implements OnInit {
     this._usuarioService.registrarEnfermedad(this.enfermedadModel).subscribe(
       response=>{
         console.log(response.enfermedadguardada);
-        Swal.fire('Enfermedad agregada');
-        this.obtenerEnfermedades(this._usuarioService.getIdentidad()._id);
+             this.obtenerEnfermedades(this._usuarioService.getIdentidad()._id);
+             Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Enfermedad registrada correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
       },
       error=>{
         console.log(<any>error)
@@ -66,8 +72,14 @@ this._usuarioService.editarEnfermedad(this.enfermedadModel1).subscribe(
     this._usuarioService.eliminarEnfermedad(this.idEliminarEnfermedad.id).subscribe(
       response=>{
         console.log(response.enfermedadEliminada);
-        Swal.fire('Enfermedad eliminada');
         this.obtenerEnfermedades(this._usuarioService.getIdentidad()._id);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Enfermedad registrada correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       error=>{
         console.log(<any>error)
